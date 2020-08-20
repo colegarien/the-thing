@@ -1,7 +1,7 @@
-using Core;
+using BowlingGame;
 using NUnit.Framework;
 
-namespace CoreTest
+namespace BowlingGameTest
 {
     public class Tests
     {
