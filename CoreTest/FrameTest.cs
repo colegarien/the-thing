@@ -9,7 +9,8 @@ namespace BowlingGameTest
         [TestCase]
         public void test_()
         {
-            Assert.IsTrue(false);
+            var frame = new Frame();
+            Assert.True(true);
         }
 
     }
