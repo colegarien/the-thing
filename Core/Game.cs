@@ -10,7 +10,7 @@ namespace BowlingGame
 
         public Game()
         {
-            head = new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame())))))))));
+            head = new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame()))))))))); // TODO not this! (something else)
         }
 
         public void Roll(int pins)

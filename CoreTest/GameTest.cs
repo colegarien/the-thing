@@ -42,5 +42,8 @@ namespace BowlingGameTest
 
             Assert.AreEqual(20, game.Score());
         }
+
+        // TODO add Spare test
+
     }
 }
