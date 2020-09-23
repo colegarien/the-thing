@@ -8,36 +8,25 @@ namespace BowlingGameTest
     {
 
         [TestCase]
-        public void test_createFrame()
+        public void test_gutterFrame()
         {
             var frame = new Frame();
-            Assert.True(true);
+            frame.Roll(0);
+            frame.Roll(0);
+
+            Assert.AreEqual(0, frame.Score());
         }
 
         [TestCase]
-        public void test_rollTwice_calculateScore()
+        public void test_rollTwice()
         {
             var frame = new Frame();
-            frame.roll(5);
-            frame.roll(3);
+            frame.Roll(5);
+            frame.Roll(3);
 
-            Assert.AreEqual(8, frame.score());
+            Assert.AreEqual(8, frame.Score());
         }
 
-        [TestCase]
-        public void test_twoFrames()
-        {
-            var frameTwo = new Frame();
-            var frameOne = new Frame(frameTwo);
-
-            frameOne.roll(5);
-            frameOne.roll(3);
-
-            frameTwo.roll(2);
-            frameTwo.roll(2);
-
-
-        }
 
     }
 }
