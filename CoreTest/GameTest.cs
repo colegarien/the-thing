@@ -1,16 +1,23 @@
 ﻿using BowlingGame;
 using NUnit.Framework;
+using System.Linq.Expressions;
 
 namespace BowlingGameTest
 {
     [TestFixture]
     class GameTest
     {
+        private Game game;
+
+        [SetUp]
+        public void SetUp()
+        {
+            game = new Game();
+        }
+
         [TestCase]
         public void test_rollTwice()
         {
-            var game = new Game();
-
             game.Roll(2);
             game.Roll(3);
 
@@ -20,8 +27,6 @@ namespace BowlingGameTest
         [TestCase]
         public void test_rollTwoFrames()
         {
-            var game = new Game();
-
             game.Roll(2);
             game.Roll(3);
             game.Roll(4);
@@ -33,8 +38,6 @@ namespace BowlingGameTest
         [TestCase]
         public void test_rollAllOnes()
         {
-            var game = new Game();
-
             for (var i = 0; i < 20; i++)
             {
                 game.Roll(1);
@@ -43,7 +46,24 @@ namespace BowlingGameTest
             Assert.AreEqual(20, game.Score());
         }
 
-        // TODO add Spare test
+        [TestCase]
+        public void test_rollSpare()
+        {
+            RollSpare();
+            game.Roll(5);
+            game.Roll(4);
+
+
+            Assert.AreEqual(24, game.Score());
+        }
+
+        private void RollSpare()
+        {
+            game.Roll(5);
+            game.Roll(5);
+        }
+
+        // TODO add strike test
 
     }
 }
