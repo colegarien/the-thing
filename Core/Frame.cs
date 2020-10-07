@@ -18,7 +18,7 @@
 
         public void Roll(int pins)
         {
-            if (IsFrameComplete())
+            if (IsFrameIncomplete())
             {
                 rolls[currentRoll++] = pins;
             }
@@ -28,20 +28,35 @@
             }
         }
 
-        private bool IsFrameComplete()
+        private bool IsFrameIncomplete()
         {
-            return currentRoll < rolls.Length;
+            return rolls[0] != 10 && currentRoll < rolls.Length;
         }
 
         public int Score()
         {
             var score = rolls[0] + rolls[1];
-            if (IsSpare())
+
+            if (IsStrike())
+            {
+                score += StrikeBonus();
+            }
+            else if (IsSpare())
             {
                 score += SpareBonus();
             }
 
             return score + NextFramesScore();
+        }
+
+        private int StrikeBonus()
+        {
+            return (nextFrame?.GetRoll(0) ?? 0) + (nextFrame?.GetRoll(1) ?? 0);
+        }
+
+        private bool IsStrike()
+        {
+            return rolls[0] == 10;
         }
 
         private bool IsSpare()

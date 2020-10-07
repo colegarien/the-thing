@@ -63,7 +63,15 @@ namespace BowlingGameTest
             game.Roll(5);
         }
 
-        // TODO add strike test
+        [TestCase]
+        public void test_rollStrike()
+        {
+            game.Roll(10);
+            game.Roll(2);
+            game.Roll(3);
+
+            Assert.AreEqual(20, game.Score());
+        }
 
     }
 }
