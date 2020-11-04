@@ -73,5 +73,45 @@ namespace BowlingGameTest
             Assert.AreEqual(20, game.Score());
         }
 
+        [TestCase]
+        public void test_tenthFrameScore()
+        {
+            rollGutterNineFrames();
+            game.Roll(1);
+            game.Roll(1);
+
+            Assert.AreEqual(2, game.Score());
+        }
+
+        [TestCase]
+        public void test_tenthFrameSpare()
+        {
+            rollGutterNineFrames();
+            game.Roll(4);
+            game.Roll(6);
+            game.Roll(1);
+
+            Assert.AreEqual(12, game.Score());
+        }
+
+        private void rollGutterNineFrames()
+        {
+            for (var i = 0; i < 18; i++)
+            {
+                game.Roll(0);
+            }
+        }
+
+    /*    [TestCase]
+        public void test_perfectGame()
+        {
+            for (var i = 0; i < 12; i++)
+            {
+                game.Roll(10);
+            }
+
+            Assert.AreEqual(300, game.Score());
+        }*/
+
     }
 }
