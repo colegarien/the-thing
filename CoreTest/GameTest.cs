@@ -91,7 +91,7 @@ namespace BowlingGameTest
             game.Roll(6);
             game.Roll(1);
 
-            Assert.AreEqual(12, game.Score());
+            Assert.AreEqual(11, game.Score());
         }
 
         private void rollGutterNineFrames()

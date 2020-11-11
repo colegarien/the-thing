@@ -21,15 +21,32 @@
 
         public int Score()
         {
-            var score = rolls[0] + rolls[1] + rolls[2];
+            var score = 0;
 
             /* TODO - implement this
              if first is a strike, add second and thrird -> if second is also strike, add third again?
             else if first+second is spare, add third
 
              */
+            if (IsSpare())
+            {
+                score = rolls[0] + rolls[1] + SpareBonus();
+            } else
+            {
+                score = rolls[0] + rolls[1];
+            }
 
             return score;
+        }
+
+        private bool IsSpare()
+        {
+            return rolls[0] + rolls[1] == 10;
+        }
+
+        private int SpareBonus()
+        {
+            return rolls[2];
         }
     }
 }
