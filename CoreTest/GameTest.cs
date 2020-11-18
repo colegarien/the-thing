@@ -1,6 +1,5 @@
 ﻿using BowlingGame;
 using NUnit.Framework;
-using System.Linq.Expressions;
 
 namespace BowlingGameTest
 {
@@ -74,6 +73,16 @@ namespace BowlingGameTest
         }
 
         [TestCase]
+        public void test_rollTurkey()
+        {
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+
+            Assert.AreEqual(60, game.Score());
+        }
+
+        [TestCase]
         public void test_tenthFrameScore()
         {
             rollGutterNineFrames();
@@ -81,17 +90,6 @@ namespace BowlingGameTest
             game.Roll(1);
 
             Assert.AreEqual(2, game.Score());
-        }
-
-        [TestCase]
-        public void test_tenthFrameSpare()
-        {
-            rollGutterNineFrames();
-            game.Roll(4);
-            game.Roll(6);
-            game.Roll(1);
-
-            Assert.AreEqual(11, game.Score());
         }
 
         private void rollGutterNineFrames()
@@ -102,7 +100,7 @@ namespace BowlingGameTest
             }
         }
 
-    /*    [TestCase]
+        [TestCase]
         public void test_perfectGame()
         {
             for (var i = 0; i < 12; i++)
@@ -111,7 +109,7 @@ namespace BowlingGameTest
             }
 
             Assert.AreEqual(300, game.Score());
-        }*/
+        }
 
     }
 }

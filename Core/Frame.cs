@@ -3,7 +3,7 @@
     public class Frame
     {
         private Frame nextFrame;
-        private int[] rolls = new int[2];
+        private readonly int[] rolls = new int[2];
         private int currentRoll = 0;
 
         public Frame()
@@ -16,7 +16,7 @@
             this.nextFrame = nextFrame;
         }
 
-        public void Roll(int pins)
+        public virtual void Roll(int pins)
         {
             if (IsFrameIncomplete())
             {
@@ -33,7 +33,7 @@
             return rolls[0] != 10 && currentRoll < rolls.Length;
         }
 
-        public int Score()
+        public virtual int Score()
         {
             var score = rolls[0] + rolls[1];
 
@@ -69,9 +69,11 @@
             return nextFrame?.GetRoll(0) ?? 0;
         }
 
-        private int GetRoll(int rollIndex)
+        protected virtual int GetRoll(int rollIndex)
         {
-            return rolls[rollIndex];
+            return rollIndex < currentRoll
+                ? rolls[rollIndex]
+                : (nextFrame?.GetRoll(rollIndex - currentRoll) ?? 0);
         }
 
         private int NextFramesScore()
