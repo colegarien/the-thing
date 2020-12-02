@@ -11,7 +11,8 @@ namespace BowlingGameTest
         [SetUp]
         public void SetUp()
         {
-            game = new Game();
+            var frameFactory = new FrameFactory(); //TODO find a way to give the most minimal access to new up. Do acceptance tests
+            game = new Game(frameFactory);
         }
 
         [TestCase]

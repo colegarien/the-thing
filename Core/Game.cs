@@ -4,9 +4,9 @@
     {
         Frame head;
 
-        public Game()
+        public Game(FrameFactory frameFactory)
         {
-            head = new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new Frame(new TenthFrame()))))))))); // TODO not this! (something else)
+            head = frameFactory.CreateFrameStack();
         }
 
         public void Roll(int pins)
