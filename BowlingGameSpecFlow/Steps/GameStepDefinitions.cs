@@ -1,4 +1,6 @@
-﻿using TechTalk.SpecFlow;
+﻿using BowlingGame;
+using TechTalk.SpecFlow;
+using FluentAssertions;
 
 namespace BowlingGameSpecFlow.Steps
 {
@@ -6,37 +8,32 @@ namespace BowlingGameSpecFlow.Steps
     public sealed class GameStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
+        private readonly Game _game;
+        private int _finalScore;
 
         public GameStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
+            _game = new Game(new FrameFactory());
         }
 
-        // TODO: Implement the Gheirkin for Gutter, Sporadic, and Perfect game Acceptance TEsts -> https://github.com/colegarien/the-thing/wiki
-
-        [Given("the first number is (.*)")]
-        public void GivenTheFirstNumberIs(int number)
+        // TODO : think of a better way to replace this "Given", it super general and bad.. think about what sorts of options would be helpful for a QA
+        [Given("a roll knocks ([0-9]+) pins over")]
+        public void GivenTheFirstNumberIs(int pins)
         {
-            _scenarioContext.Pending();
+            _game.Roll(pins);
         }
 
-        [Given("the second number is (.*)")]
-        public void GivenTheSecondNumberIs(int number)
+        [When("the game is over")]
+        public void WhenTheGameIsOver()
         {
-            _scenarioContext.Pending();
+            _finalScore = _game.Score();
         }
 
-        [When("the two numbers are added")]
-        public void WhenTheTwoNumbersAreAdded()
+        [Then("the score should be (.*)")]
+        public void ThenTheScoreShouldBe(int finalScore)
         {
-
-            _scenarioContext.Pending();
-        }
-
-        [Then("the result should be (.*)")]
-        public void ThenTheResultShouldBe(int result)
-        {
-            _scenarioContext.Pending();
+            _finalScore.Should().Be(finalScore);
         }
     }
 }
