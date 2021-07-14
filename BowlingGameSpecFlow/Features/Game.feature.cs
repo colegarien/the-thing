@@ -252,7 +252,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("a roll knocks 4 pins over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 46
- testRunner.And("a roll knocks 8 pins over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("a roll knocks 7 pins over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 47
  testRunner.When("the game is over", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

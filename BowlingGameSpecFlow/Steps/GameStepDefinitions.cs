@@ -19,7 +19,7 @@ namespace BowlingGameSpecFlow.Steps
 
         // TODO : think of a better way to replace this "Given", it super general and bad.. think about what sorts of options would be helpful for a QA
         [Given("a roll knocks ([0-9]+) pins over")]
-        public void GivenTheFirstNumberIs(int pins)
+        public void GivenARollKnocksPinsOver(int pins)
         {
             _game.Roll(pins);
         }
